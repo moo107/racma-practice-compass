@@ -41,14 +41,14 @@ export interface Business {
 }
 
 export interface Service {
-  id: string; businessId: string; name: string; description: string; price: string; duration?: number; visible: boolean;
+  id: string; businessId: string; name: string; description: string; price: string; duration?: number | undefined; visible: boolean;
 }
 export interface Customer { id: string; businessId: string; name: string; email: string; phone: string; lastInteraction: string }
 export interface RequestNote { text: string; at: string }
 export interface CustomerRequest {
   id: string; businessId: string; customerId: string; customerName: string; email: string; phone: string;
   service: string; message: string; receivedAt: string; status: RequestStatus; notes: RequestNote[];
-  followUp?: string; hasPhoto?: boolean; preferredDate?: string;
+  followUp?: string | undefined; hasPhoto?: boolean; preferredDate?: string;
 }
 export interface Appointment {
   id: string; businessId: string; customerId: string; customerName: string; service: string;
