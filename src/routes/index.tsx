@@ -1,23 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { MarketingLayout } from "@/components/marketing/MarketingLayout";
+import { Categories, DashboardPreview, Examples, Faq, Features, FinalCta, Hero, HowItWorks, Pricing, Problems, Solution } from "@/components/marketing/sections";
 
-// The home route ships no og:image, so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({ meta: [{ title: "RACMA — Website, requests and customers in one place" }, { name: "description", content: "Create a professional business website, receive customer requests and manage your business — all from one simple platform." }, { property: "og:title", content: "RACMA — Website, requests and customers in one place" }, { property: "og:description", content: "Create a professional business website, receive customer requests and manage your business — all from one simple platform." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }] }),
+  component: Home,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
+function Home() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <MarketingLayout>
+      <Hero /><Problems /><Solution /><Categories /><Features /><Examples /><DashboardPreview /><HowItWorks /><Pricing /><Faq /><FinalCta />
+    </MarketingLayout>
   );
 }
