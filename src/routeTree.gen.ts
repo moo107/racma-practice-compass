@@ -10,16 +10,31 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AppRouteImport } from './routes/app'
 import { Route as FeaturesRouteImport } from './routes/features'
 import { Route as HowItWorksRouteImport } from './routes/how-it-works'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as SignupRouteImport } from './routes/signup'
+import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as AppAppointmentsRouteImport } from './routes/app.appointments'
+import { Route as AppCustomersRouteImport } from './routes/app.customers'
+import { Route as AppNotificationsRouteImport } from './routes/app.notifications'
+import { Route as AppRequestsRouteImport } from './routes/app.requests'
+import { Route as AppServicesRouteImport } from './routes/app.services'
+import { Route as AppSettingsRouteImport } from './routes/app.settings'
+import { Route as AppWebsiteRouteImport } from './routes/app.website'
 import { Route as SSlugRouteImport } from './routes/s.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppRoute = AppRouteImport.update({
+  id: '/app',
+  path: '/app',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FeaturesRoute = FeaturesRouteImport.update({
@@ -37,6 +52,11 @@ const LoginRoute = LoginRouteImport.update({
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OnboardingRoute = OnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PricingRoute = PricingRouteImport.update({
   id: '/pricing',
   path: '/pricing',
@@ -47,6 +67,46 @@ const SignupRoute = SignupRouteImport.update({
   path: '/signup',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppIndexRoute = AppIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAppointmentsRoute = AppAppointmentsRouteImport.update({
+  id: '/appointments',
+  path: '/appointments',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppCustomersRoute = AppCustomersRouteImport.update({
+  id: '/customers',
+  path: '/customers',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppNotificationsRoute = AppNotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppRequestsRoute = AppRequestsRouteImport.update({
+  id: '/requests',
+  path: '/requests',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppServicesRoute = AppServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppSettingsRoute = AppSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppWebsiteRoute = AppWebsiteRouteImport.update({
+  id: '/website',
+  path: '/website',
+  getParentRoute: () => AppRoute,
+} as any)
 const SSlugRoute = SSlugRouteImport.update({
   id: '/s/$slug',
   path: '/s/$slug',
@@ -55,67 +115,127 @@ const SSlugRoute = SSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/app': typeof AppRouteWithChildren
   '/features': typeof FeaturesRoute
   '/how-it-works': typeof HowItWorksRoute
   '/login': typeof LoginRoute
+  '/onboarding': typeof OnboardingRoute
   '/pricing': typeof PricingRoute
   '/signup': typeof SignupRoute
+  '/app/appointments': typeof AppAppointmentsRoute
+  '/app/customers': typeof AppCustomersRoute
+  '/app/notifications': typeof AppNotificationsRoute
+  '/app/requests': typeof AppRequestsRoute
+  '/app/services': typeof AppServicesRoute
+  '/app/settings': typeof AppSettingsRoute
+  '/app/website': typeof AppWebsiteRoute
   '/s/$slug': typeof SSlugRoute
+  '/app/': typeof AppIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/features': typeof FeaturesRoute
   '/how-it-works': typeof HowItWorksRoute
   '/login': typeof LoginRoute
+  '/onboarding': typeof OnboardingRoute
   '/pricing': typeof PricingRoute
   '/signup': typeof SignupRoute
+  '/app/appointments': typeof AppAppointmentsRoute
+  '/app/customers': typeof AppCustomersRoute
+  '/app/notifications': typeof AppNotificationsRoute
+  '/app/requests': typeof AppRequestsRoute
+  '/app/services': typeof AppServicesRoute
+  '/app/settings': typeof AppSettingsRoute
+  '/app/website': typeof AppWebsiteRoute
   '/s/$slug': typeof SSlugRoute
+  '/app': typeof AppIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/app': typeof AppRouteWithChildren
   '/features': typeof FeaturesRoute
   '/how-it-works': typeof HowItWorksRoute
   '/login': typeof LoginRoute
+  '/onboarding': typeof OnboardingRoute
   '/pricing': typeof PricingRoute
   '/signup': typeof SignupRoute
+  '/app/appointments': typeof AppAppointmentsRoute
+  '/app/customers': typeof AppCustomersRoute
+  '/app/notifications': typeof AppNotificationsRoute
+  '/app/requests': typeof AppRequestsRoute
+  '/app/services': typeof AppServicesRoute
+  '/app/settings': typeof AppSettingsRoute
+  '/app/website': typeof AppWebsiteRoute
   '/s/$slug': typeof SSlugRoute
+  '/app/': typeof AppIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/app'
     | '/features'
     | '/how-it-works'
     | '/login'
+    | '/onboarding'
     | '/pricing'
     | '/signup'
+    | '/app/appointments'
+    | '/app/customers'
+    | '/app/notifications'
+    | '/app/requests'
+    | '/app/services'
+    | '/app/settings'
+    | '/app/website'
     | '/s/$slug'
+    | '/app/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/features'
     | '/how-it-works'
     | '/login'
+    | '/onboarding'
     | '/pricing'
     | '/signup'
+    | '/app/appointments'
+    | '/app/customers'
+    | '/app/notifications'
+    | '/app/requests'
+    | '/app/services'
+    | '/app/settings'
+    | '/app/website'
     | '/s/$slug'
+    | '/app'
   id:
     | '__root__'
     | '/'
+    | '/app'
     | '/features'
     | '/how-it-works'
     | '/login'
+    | '/onboarding'
     | '/pricing'
     | '/signup'
+    | '/app/appointments'
+    | '/app/customers'
+    | '/app/notifications'
+    | '/app/requests'
+    | '/app/services'
+    | '/app/settings'
+    | '/app/website'
     | '/s/$slug'
+    | '/app/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AppRoute: typeof AppRouteWithChildren
   FeaturesRoute: typeof FeaturesRoute
   HowItWorksRoute: typeof HowItWorksRoute
   LoginRoute: typeof LoginRoute
+  OnboardingRoute: typeof OnboardingRoute
   PricingRoute: typeof PricingRoute
   SignupRoute: typeof SignupRoute
   SSlugRoute: typeof SSlugRoute
@@ -128,6 +248,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app': {
+      id: '/app'
+      path: '/app'
+      fullPath: '/app'
+      preLoaderRoute: typeof AppRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/features': {
@@ -151,6 +278,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/onboarding': {
+      id: '/onboarding'
+      path: '/onboarding'
+      fullPath: '/onboarding'
+      preLoaderRoute: typeof OnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/pricing': {
       id: '/pricing'
       path: '/pricing'
@@ -165,6 +299,62 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SignupRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/': {
+      id: '/app/'
+      path: '/'
+      fullPath: '/app/'
+      preLoaderRoute: typeof AppIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/appointments': {
+      id: '/app/appointments'
+      path: '/appointments'
+      fullPath: '/app/appointments'
+      preLoaderRoute: typeof AppAppointmentsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/customers': {
+      id: '/app/customers'
+      path: '/customers'
+      fullPath: '/app/customers'
+      preLoaderRoute: typeof AppCustomersRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/notifications': {
+      id: '/app/notifications'
+      path: '/notifications'
+      fullPath: '/app/notifications'
+      preLoaderRoute: typeof AppNotificationsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/requests': {
+      id: '/app/requests'
+      path: '/requests'
+      fullPath: '/app/requests'
+      preLoaderRoute: typeof AppRequestsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/services': {
+      id: '/app/services'
+      path: '/services'
+      fullPath: '/app/services'
+      preLoaderRoute: typeof AppServicesRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/settings': {
+      id: '/app/settings'
+      path: '/settings'
+      fullPath: '/app/settings'
+      preLoaderRoute: typeof AppSettingsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/website': {
+      id: '/app/website'
+      path: '/website'
+      fullPath: '/app/website'
+      preLoaderRoute: typeof AppWebsiteRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/s/$slug': {
       id: '/s/$slug'
       path: '/s/$slug'
@@ -175,11 +365,37 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AppRouteChildren {
+  AppAppointmentsRoute: typeof AppAppointmentsRoute
+  AppCustomersRoute: typeof AppCustomersRoute
+  AppNotificationsRoute: typeof AppNotificationsRoute
+  AppRequestsRoute: typeof AppRequestsRoute
+  AppServicesRoute: typeof AppServicesRoute
+  AppSettingsRoute: typeof AppSettingsRoute
+  AppWebsiteRoute: typeof AppWebsiteRoute
+  AppIndexRoute: typeof AppIndexRoute
+}
+
+const AppRouteChildren: AppRouteChildren = {
+  AppAppointmentsRoute: AppAppointmentsRoute,
+  AppCustomersRoute: AppCustomersRoute,
+  AppNotificationsRoute: AppNotificationsRoute,
+  AppRequestsRoute: AppRequestsRoute,
+  AppServicesRoute: AppServicesRoute,
+  AppSettingsRoute: AppSettingsRoute,
+  AppWebsiteRoute: AppWebsiteRoute,
+  AppIndexRoute: AppIndexRoute,
+}
+
+const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AppRoute: AppRouteWithChildren,
   FeaturesRoute: FeaturesRoute,
   HowItWorksRoute: HowItWorksRoute,
   LoginRoute: LoginRoute,
+  OnboardingRoute: OnboardingRoute,
   PricingRoute: PricingRoute,
   SignupRoute: SignupRoute,
   SSlugRoute: SSlugRoute,

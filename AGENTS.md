@@ -28,3 +28,8 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## RACMA architecture
+- Brand name, categories, demo data and EN/NL text live in src/config/* and src/i18n/dict.ts; components read from there so trades and the brand name change in one place.
+- Phase 1 state is a single localStorage-backed workspace in src/store/app-store.tsx shaped like future business-scoped tables, so it can be swapped for Lovable Cloud later.
+- Public business websites use `.site[data-palette]` CSS tokens (--s-*) in styles.css, keeping sector visuals separate from the RACMA app theme.

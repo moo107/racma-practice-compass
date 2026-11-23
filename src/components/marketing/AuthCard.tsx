@@ -18,7 +18,7 @@ export function AuthCard({ mode }: { mode: "login" | "signup" }) {
         <div className="rounded-xl border border-border bg-card p-7 shadow-soft">
           <h1 className="text-xl font-semibold">{t(signup ? "auth.signup.t" : "auth.login.t")}</h1>
           <p className="mt-1 text-sm text-muted-foreground">{t(signup ? "auth.signup.s" : "auth.login.s")}</p>
-          <form className="mt-6 space-y-4" onSubmit={(e) => { e.preventDefault(); nav({ to: "/" }); }}>
+          <form className="mt-6 space-y-4" onSubmit={(e) => { e.preventDefault(); nav({ to: signup ? "/onboarding" : "/app" }); }}>
             {signup && <div className="space-y-1.5"><Label htmlFor="n">{t("auth.name")}</Label><Input id="n" autoComplete="name" /></div>}
             <div className="space-y-1.5"><Label htmlFor="e">{t("auth.email")}</Label><Input id="e" type="email" autoComplete="email" /></div>
             <div className="space-y-1.5"><Label htmlFor="p">{t("auth.password")}</Label><Input id="p" type="password" autoComplete={signup ? "new-password" : "current-password"} /></div>
